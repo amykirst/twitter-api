@@ -1,0 +1,142 @@
+/* ----------------------- CSS Reset ----------------------- */
+
+a img { border: 0; }
+h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; line-height: 1em; font-size: 100%; }
+p { margin: 0 0 1em 0; }
+body { margin: 0; }
+*:focus { outline: 0; } /* Prevent focus outline for Chrome */
+
+
+
+/* ----------------------- Styles ----------------------- */
+.outline { /* Hide headings intended for HTML outline */
+	display: none;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #003043;
+	font-family: Arial, serif;
+	font-size: 14px;
+	min-width: 303px;
+}
+
+.wrapper {
+	background-color: #fff;
+	width: 66%;
+	margin: 0 auto;
+	padding: 50px 50px 0 50px;
+	box-shadow: 6px 0 4px -4px #222 , -6px 0 4px -4px #222;
+	min-height: 100%; 
+}
+
+.user-search, .topic-search {
+	margin-top: 50px;
+
+}
+
+.user, .topic-result {
+	padding-bottom: 1px; /* To force wrapper to bottom of window edge (paragraph collapsing) */
+	margin-top: 15px;
+}
+
+.user img, .topic-result img {
+	float: left;
+}
+
+.user-details, .topic-details { /* ?? Added class to prevent text from wrapping around image. Is there a better way? */
+	margin-left: 95px;
+}
+
+header img {
+	display: block;
+	margin: 0 auto;
+}
+
+.user-search > h2, .topic-search > h2 {
+	font-size: 24px;
+	color: #003043;
+	margin-bottom: 15px;
+}
+
+.description {
+	font-size: 14px;
+	color: #003043;
+}
+
+input[name="topic_search"], input[name="user_search"] {
+	width:70%;
+	height: 55px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #a1a1a1;
+	background-color: #ebebeb;
+	padding: 0 10px 0 10px;
+	margin-bottom: 25px;
+}
+
+input[name="topic_search"], input[name="user_search"], input[type="submit"] {
+	height: 55px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+input[type="submit"] {
+	width: 20%;
+	margin-left: 2.5%;
+	background-color: #006f99;
+	color: #fff;
+	border: none;
+	padding:0;
+}
+
+input[type="submit"]:hover {
+	background-color: #003043;
+}
+
+.results {
+	margin-bottom: 25px;
+	color: #a1a1a1;
+}
+
+a:link {
+	color: #006f99;
+	font-weight: bold;
+}
+
+
+/* ----------------------- Responsive Styles ----------------------- */
+
+@media screen and (max-width: 984px) {
+
+	input[type="submit"] {
+		margin-left: 0;
+		display: block;
+		margin-bottom: 25px;
+		width: 40%;
+	}
+
+	input[name="topic_search"], input[name="user_search"] {
+	width:100%;
+	}
+}
+
+@media screen and (max-width: 800px) {
+
+/* Need strategy for header image */
+
+}
+
+@media screen and (max-width: 400px) {
+
+	input[name="topic_search"], input[name="user_search"], input[type="submit"] {
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+
+}
