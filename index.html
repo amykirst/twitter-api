@@ -7,41 +7,50 @@
 <link rel="stylesheet" href="styles.css" type="text/css">
 <script src="modernizr.custom.86957.js"></script>
 <script src="respond.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="app.js"></script>
 </head>
 <body>
 <div class="wrapper">
 	<header>
-		<h1 class="outline">#BuffaloTweets</h1>
-		<img src="buffalotweets.png" alt="#BuffaloTweets" />
+		
+		<img src="skyline-no-banner.png" alt="Buffalo Skyline" />
+		<div class="ribbon">
+			<h1 class="title">#BuffaloTweets</h1>
+		</div><!--end ribbon -->
 	</header>
 	<section class="user-search">
 		<h2>Twitter User Search</h2>
 		<p class="description">Find Twitter users within 50 miles of Buffalo, NY.</p>
-		<form>
+		<form class="user-getter">
 			<input type="text" name="user_search" placeholder="First Name, Last Name, or Both">
 			<input type="submit" value="Search">
 		</form>
 		
 		<section>
-			<h2 class="results">Search Results</h2>
-			<div class="user">
+			<h2 class="resultsTitle hidden">Search Results</h2>
+			<div class="user-results"></div>
+			<!--<div class="user-result">
 			<img src="profile-pic.jpg" alt="Jane Doe" />
 				<div class="user-details">
 				<p><strong><a href="#">Jane Doe</a></strong></p>
 				<p><strong>Screen Name:</strong> Jane Doe</p>
 				<p><strong>Followers:</strong> 123</p>
 				<p><strong>Description:</strong> Insert text</p>
-				</div><!-- end user-details -->
-			</div>
-			<div class="user">
-			<img src="profile-pic.jpg" alt="Jane Doe2" />
-				<div class="user-details">
-				<p><strong><a href="#">Jane Doe2</a></strong></p>
-				<p><strong>Screen Name:</strong> Jane Doe2</p>
-				<p><strong>Followers:</strong> 123</p>
-				<p><strong>Description:</strong> Insert text</p>
-				</div><!-- end user-details -->
-			</div>
+				</div>
+			</div> -->
+			<div class="user-template hidden">
+				<div class="user-result">
+					<img class="profile-img" src="" alt="" />
+					<div class="user-details">
+						<p class="real-name"><strong><a href=""></a></strong></p>
+						<p class="screen-name"><strong>Screen Name:</strong> </p>
+						<p class="followers"><strong>Followers:</strong> </p>
+						<p class="description"><strong>Description:</strong></p>
+					</div>
+				</div> 
+
+			</div><!-- end template -->
 		</section> 
 	</section><!-- end user search -->
 	<section class="topic-search">
@@ -52,23 +61,27 @@
 			<input type="submit" value="Search">
 		</form>
 		<section>
-			<h2 class="results">Search Results</h2>
+			<h2 class="resultsTitle hidden">Search Results</h2>
+			<div class="topic-results"></div>	
+			<!--
 			<div class="topic-result">
 			<img src="profile-pic.jpg" alt="Jane Doe" />
 				<div class="topic-details">
 				<p><a href="#">Maecenas elit turpis, porttitor vulputate euismod sed, fringilla nec dolor. Quisque at commodo diam.</a></p>
 				<p><strong>Screen Name:</strong> Jane Doe</p>
 				<p><strong>Time:</strong> July 5, 2014 at 1:39 p.m.</p>
-				</div><!-- end topic details -->
-			</div>
-			<div class="topic-result">
-			<img src="profile-pic.jpg" alt="Jane Doe" />
-				<div class="topic-details">
-				<p><a href="#">Maecenas elit turpis, porttitor vulputate euismod sed, fringilla nec dolor. Quisque at commodo diam.</a></p>
-				<p><strong>Screen Name:</strong> Jane Doe</p>
-				<p><strong>Time:</strong> July 5, 2014 at 1:39 p.m.</p>
-				</div><!--end topic details-->
-			</div>
+				</div>
+			</div> -->
+			<div class="topic-template hidden">
+				<div class="topic-result">
+					<img src="" alt="" />
+					<div class="topic-details">
+					<p class="status"><a href=""></a></p>
+					<p class="topic-screen-name"><strong>Screen Name:</strong> </p>
+					<p class="time"><strong>Time:</strong> </p>
+					</div>
+				</div> 
+			</div><!-- end template -->
 		</section> 
 	</section><!-- end topic-search -->
 </div><!--end wrapper -->

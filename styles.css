@@ -9,7 +9,7 @@ body { margin: 0; }
 
 
 /* ----------------------- Styles ----------------------- */
-.outline { /* Hide headings intended for HTML outline */
+.hidden {
 	display: none;
 }
 
@@ -38,12 +38,12 @@ body {
 
 }
 
-.user, .topic-result {
+.user-result, .topic-result {
 	padding-bottom: 1px; /* To force wrapper to bottom of window edge (paragraph collapsing) */
 	margin-top: 15px;
 }
 
-.user img, .topic-result img {
+.user-result img, .topic-result img {
 	float: left;
 }
 
@@ -54,6 +54,43 @@ body {
 header img {
 	display: block;
 	margin: 0 auto;
+}
+
+.ribbon { 
+	background: #003043; 
+	position: relative; 
+	height: 50px; 
+	width: 66%; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ribbon:before, .ribbon:after { 
+	content: ''; 
+	position: absolute; 
+	height:0; 
+	border: 25px solid transparent; 
+	top: 0; 
+	width: 0; 
+	border-top-color: #003043; 
+	border-bottom-color: #003043; 
+
+}
+
+.ribbon:before { 
+	left: -25px; 
+}
+
+.ribbon:after { 
+	right: -25px; 
+}
+
+.title {
+	color: #fff;
+	font-size: 25px;
+	font-family: Georgia, Times, "Times New Roman", serif;
+	text-align: center;
+	line-height: 2em;
 }
 
 .user-search > h2, .topic-search > h2 {
@@ -98,7 +135,7 @@ input[type="submit"]:hover {
 	background-color: #003043;
 }
 
-.results {
+.resultsTitle {
 	margin-bottom: 25px;
 	color: #a1a1a1;
 }
@@ -111,7 +148,20 @@ a:link {
 
 /* ----------------------- Responsive Styles ----------------------- */
 
+@media screen and (max-width: 1150px) {
+
+	header {
+		 overflow: hidden;
+	}
+
+	.ribbon {
+		 width: 80%;
+	}
+
+}
+
 @media screen and (max-width: 984px) {
+	
 
 	input[type="submit"] {
 		margin-left: 0;
@@ -121,17 +171,28 @@ a:link {
 	}
 
 	input[name="topic_search"], input[name="user_search"] {
-	width:100%;
+	width:90%;
 	}
 }
 
-@media screen and (max-width: 800px) {
 
-/* Need strategy for header image */
+@media screen and (max-width: 465px) {
 
-}
+	.title {
+		font-size: 18px;
+		line-height: 2.8em;
+	}
 
-@media screen and (max-width: 400px) {
+	.user-search > h2, .topic-search > h2 {
+		font-size: 16px;
+		margin-bottom: 15px;
+	}
+
+	.wrapper {
+		padding: 25px 25px 0 25px;
+		width: 80%;
+	}
+
 
 	input[name="topic_search"], input[name="user_search"], input[type="submit"] {
 		font-size: 14px;
