@@ -12,17 +12,6 @@ API document: https://dev.twitter.com/docs/api/1.1/get/users/search
 
 Example request: https://api.twitter.com/1.1/users/search.json?q=Twitter%20API&page=1&count=3
 
-For our search results, we need:
-
-.real-name: "name:"
-.profile-img: "profile_image_url"
-.screen-name: "screen_name"
-.followers: "followers_count"
-.description: "description"
-
-My Get request will be: 
-
-https://api.twitter.com/1.1/users/search.json?q=  //? Need help with this part. Don't know how to pass in the city and the searched words. Also how can I specify that ppl should be within 50 mi. of Buffalo?
 
 Twitter returns this:
 
@@ -166,9 +155,9 @@ var showUser = function(user) {
 	return result;
 }; // end showUser function
 
-// Function to get users from Twitter
+// Function to get users from Twitter - ?? Not sure how to write the API Call
 var getUser = function() {
-	
+
 	// Function that sends API request to Twitter
 	var apiCall = $.ajax({
 	  	url: "https://api.twitter.com/1.1/users/search.json?name=" + query + "&geocode=42.94003620000001,-78.8677924,50mi",
