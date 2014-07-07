@@ -143,12 +143,12 @@ var getUser = function(query) {
       type: "GET",
       url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
       dataType: "jsonp"
-    })
-
-      console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
     });
 
-  };
+    console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
+
+  }); // end oAuth popup
+};
 
 /* //Call to Twitter
 
@@ -163,7 +163,7 @@ var getUser = function(query) {
   }); */
 
 
-	/*.done(function() {
+  /*.done(function() {
     
     // Show search results title
       $('.user-search .resultsTitle').removeClass("hidden");
@@ -173,9 +173,6 @@ var getUser = function(query) {
     }).fail(function() {
      
     }); */
-
-}; // end getUser function
-  
 
 // Function that appends search result to DOM
 var showUser = function(user) {
