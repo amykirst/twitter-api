@@ -148,7 +148,7 @@ var getUser = function(query) {
       console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
     });
 
-  })
+  };
 
 /* //Call to Twitter
 
