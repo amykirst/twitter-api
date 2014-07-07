@@ -137,19 +137,21 @@ $(document).ready(function() {
 var getUser = function(query) {
 
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
-  OAuth.popup('twitter').done(function(result) {
+  OAuth.popup('twitter').done(function(twitterData) {
+
     $.ajax({
       type: "GET",
       url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
       dataType: "jsonp"
     })
 
-    .done(function( twitterData ) {
       console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
     });
 
   })
-/*
+
+/* //Call to Twitter
+
   $.ajax({
     type: "GET",
     url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
