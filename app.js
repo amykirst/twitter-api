@@ -119,60 +119,71 @@ Twitter returns this:
 
 */
 
-// Click function
-$('.user-getter').submit(function(event) {
-    // zero out results if previous search has run
-    $('.user-results').html('');
-    // Get the values of what the person entered in search
-    var query = $(this).find("input[name='user_search']").val();
-    // Show search results title
-    $('.resultsTitle').removeClass("hidden");
-    // Run function to send API request to Twitter
-    getUser(query);
-}); // end click function
-
-
-
-// Function that appends search result to DOM
-var showUser = function(user) {
-
-	var image = result.find('.profile-img');
-	image.attr('src', users.profile_image_url);
-
-	var result = $('.user-template .user-result').clone();
-	var name = result.find('.real-name');
-	name.append(user.name);
-
-	var screenName = result.find('.screen-name');
-	screenName.append(user.screen_name);
-
-	var followers = result.find('.followers');
-	followers.append(user.followers_count);
-
-	var description = result.find('description');
-    description.append(user.description);
-
-	return result;
-}; // end showUser function
+$(document).ready(function() {
+  // Click function
+  $('.user-getter').submit(function(event) {
+      // prevent form refresh
+      event.preventDefault();
+      // zero out results if previous search has run
+      $('.user-results').html('');
+      // Get the values of what the person entered in search
+      var query = $(this).find("input[name='user_search']").val();
+      // Run function to send API request to Twitter
+      getUser(query);
+  }); // end click function
+}); // end document ready
 
 // Function to get users from Twitter - ?? Not sure how to write the API Call
-var getUser = function() {
+var getUser = function(query) {
 
-	// Function that sends API request to Twitter
-	var apiCall = $.ajax({
-	  	url: "https://api.twitter.com/1.1/users/search.json?name=" + query + "&geocode=42.94003620000001,-78.8677924,50mi",
-	  	data: request,
-	  	dataType: "jsonp"
-	  	type: "GET",
-	})
+  var request = {
+    name: query,
+  }
 
-	.done(function() {
+  $.ajax({
+    type: "GET",
+    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query
+  })
+
+  .done(function( twitterData ) {
+    console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
+  });
+
+
+
+	/*.done(function() {
     
+    // Show search results title
+      $('.user-search .resultsTitle').removeClass("hidden");
+
       });
 
     }).fail(function() {
      
-    });
+    }); */
 
 }; // end getUser function
   
+
+// Function that appends search result to DOM
+var showUser = function(user) {
+
+  console.log(user);
+  /*var image = result.find('.profile-img');
+  image.attr('src', users.profile_image_url);
+
+  var result = $('.user-template .user-result').clone();
+  var name = result.find('.real-name');
+  name.append(user.name);
+
+  var screenName = result.find('.screen-name');
+  screenName.append(user.screen_name);
+
+  var followers = result.find('.followers');
+  followers.append(user.followers_count);
+
+  var description = result.find('description');
+    description.append(user.description); 
+
+  return result; */
+}; // end showUser function
