@@ -148,7 +148,8 @@ var getUser = function(query) {
 
   $.ajax({
     type: "GET",
-    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query
+    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
+    dataType: "jsonp"
   })
 
   .done(function( twitterData ) {
