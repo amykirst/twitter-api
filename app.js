@@ -140,37 +140,21 @@ var getUser = function(query) {
     name: query,
   }
 
-$.ajax({
-  type: "POST",
-  url: "https://api.twitter.com/oauth2/token",
-  User-Agent: "Buffalo Tweets",
-  Authorization: Basic eHZ6MWV2RlM0d0VFUFRHRUZQSEJvZzpMOHFxOVBaeVJn
-                     NmllS0dFS2hab2xHQzB2SldMdzhpRUo4OERSZHlPZw==,
-  Content-Type: application/x-www-form-urlencoded;charset=UTF-8,
-  Content-Length: 29,
-  Accept-Encoding: gzip,
-  grant_type=client_credentials
-})
-
+  OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
+  OAuth.popup('twitter').done(function(result) {
+  console.log(result)
+    // do some stuff with result
+  })
 
   $.ajax({
     type: "GET",
-    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
-    User-Agent: "Buffalo Tweets",
-    Authorization: Bearer [bearer token],
-    Accept-Encoding: gzip
+    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query
   })
 
   .done(function( twitterData ) {
     console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
   });
 
-
-  // OAuth consumer key: Z4lQJp8SFdFkCKcyb2eIgCOFX
-  // OAuth consumer secret: eKbi4ljtBPiXRphxSNz2QiQfg8OXoukeNW1IOAbjuRyMtxOTBX
-
-  // Z4lQJp8SFdFkCKcyb2eIgCOFX:eKbi4ljtBPiXRphxSNz2QiQfg8OXoukeNW1IOAbjuRyMtxOTBX
-  // Base64 encoded: WjRsUUpwOFNGZEZrQ0tjeWIyZUlnQ09GWDplS2JpNGxqdEJQaVhScGh4U056MlFpUWZnOE9Yb3VrZU5XMUlPQWJqdVJ5TXR4T1RCWA==
 
 	/*.done(function() {
     
@@ -208,3 +192,5 @@ var showUser = function(user) {
 
   return result; */
 }; // end showUser function
+
+
