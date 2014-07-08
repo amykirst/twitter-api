@@ -142,7 +142,7 @@ var getUser = function(query) {
     twitterData.get('/1.1/users/search.json', {
          data: {
              q: query,
-             geocode: 42.94003620000001,-78.8677924,50mi
+             geocode: geocode%3A%2042.94003620000001%2C-78.8677924%2C50mi
          }
     }).done(function(search) {
          //result of the search here
