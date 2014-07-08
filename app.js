@@ -37,24 +37,23 @@ var getTweets = function(query) {
 // Function that appends search result to DOM
 var showTweet = function(tweets) {
 
-  console.log(tweets);
-  /*var image = result.find('.profile-img');
+  //console.log(tweets);
+
+  var result = $('.topic-template .topic-results').clone();
+
+  var image = result.find('.profile-img');
   image.attr('src', tweets.profile_image_url);
 
-  var result = $('.user-template .user-result').clone();
-  var name = result.find('.real-name');
-  name.append(tweets.name);
+  var status = result.find('.status');
+  status.append(tweets.text);
 
   var screenName = result.find('.screen-name');
-  screenName.append(tweets.screen_name);
+  screenName.append(tweets.user.screen_name);
 
-  var followers = result.find('.followers');
-  followers.append(tweets.followers_count);
+  var time = result.find('.time');
+  time.append(tweets.created_at);
 
-  var description = result.find('description');
-    description.append(tweets.description); 
-
-  return result; */
+  return result; 
 }; // end showUser function
 
 
