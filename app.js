@@ -139,13 +139,13 @@ var getUser = function(query) {
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
   OAuth.popup('twitter').done(function(twitterData) {
 
-    twitterData.get('/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=', {
+    twitterData.get('/1.1/users/search.json', {
          data: {
              q: query
          }
     }).done(function(search) {
          //result of the search here
-         console.log(search);
+         showUser(search);
     }).fail(function(error) {
          //error management here
     });
