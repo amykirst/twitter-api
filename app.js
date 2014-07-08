@@ -1,140 +1,19 @@
-
-// user search
-
-/* 
-
-Person will enter user's first name or last name. When they click "search", they will see a list of users whose name 
-matches the searched words and who is within 50 miles of Buffalo, NY. 
-
-The function will also clear any results from previous searches.
-
-API document: https://dev.twitter.com/docs/api/1.1/get/users/search
-
-Example request: https://api.twitter.com/1.1/users/search.json?q=Twitter%20API&page=1&count=3
-
-
-Twitter returns this:
-
-[
-  {
-    "profile_sidebar_fill_color": "DDEEF6",
-    "profile_background_tile": true,
-    "profile_sidebar_border_color": "C0DEED",
-    "name": "Twitter API",
-    "created_at": "Wed May 23 06:01:13 +0000 2007",
-    "profile_image_url": "http://a0.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png",
-    "location": "San Francisco, CA",
-    "follow_request_sent": false,
-    "id_str": "6253282",
-    "is_translator": false,
-    "profile_link_color": "0084B4",
-    "entities": {
-      "url": {
-        "urls": [
-          {
-            "expanded_url": null,
-            "url": "http://dev.twitter.com",
-            "indices": [
-              0,
-              22
-            ],
-            "display_url": null
-          }
-        ]
-      },
-      "description": {
-        "urls": [
- 
-        ]
-      }
-    },
-    "default_profile": false,
-    "contributors_enabled": false,
-    "favourites_count": 25,
-    "url": "http://dev.twitter.com",
-    "profile_banner_url": "https://twimg0-a.akamaihd.net/profile_banners/6253282/1347394302",
-    "utc_offset": -28800,
-    "profile_image_url_https": "https://twimg0-a.akamaihd.net/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png",
-    "id": 6253282,
-    "listed_count": 11426,
-    "profile_use_background_image": true,
-    "lang": "en",
-    "profile_text_color": "333333",
-    "followers_count": 1562132,
-    "protected": false,
-    "verified": true,
-    "description": "The Real Twitter API. I tweet about API changes, service issues and happily answer questions about Twitter and our API. Don't get an answer? It's on my website.",
-    "geo_enabled": true,
-    "time_zone": "Pacific Time (US & Canada)",
-    "notifications": false,
-    "profile_background_image_url_https": "https://twimg0-a.akamaihd.net/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
-    "profile_background_color": "C0DEED",
-    "status": {
-      "coordinates": null,
-      "truncated": false,
-      "favorited": false,
-      "created_at": "Wed Mar 27 01:19:47 +0000 2013",
-      "id_str": "316721175038406658",
-      "entities": {
-        "urls": [
- 
-        ],
-        "hashtags": [
- 
-        ],
-        "user_mentions": [
-          {
-            "name": "TwitterDevJP",
-            "id_str": "70915829",
-            "id": 70915829,
-            "indices": [
-              106,
-              119
-            ],
-            "screen_name": "TwitterDevJP"
-          }
-        ]
-      },
-      "in_reply_to_user_id_str": null,
-      "text": "In case you didn't know, we have an official account tweeting about Twitter developer topics in Japanese: @TwitterDevJP",
-      "contributors": null,
-      "id": 316721175038406658,
-      "in_reply_to_status_id_str": null,
-      "retweet_count": 19,
-      "geo": null,
-      "retweeted": false,
-      "in_reply_to_user_id": null,
-      "source": "web",
-      "place": null,
-      "in_reply_to_screen_name": null,
-      "in_reply_to_status_id": null
-    },
-    "friends_count": 34,
-    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/656927849/miyt9dpjz77sc0w3d4vj.png",
-    "default_profile_image": false,
-    "statuses_count": 3406,
-    "screen_name": "twitterapi",
-    "following": true
-  }
-
-*/
-
 $(document).ready(function() {
   // Click function
-  $('.user-getter').submit(function(event) {
+  $('.tweet-getter').submit(function(event) {
       // prevent form refresh
       event.preventDefault();
       // zero out results if previous search has run
-      $('.user-results').html('');
+      $('.topic-results').html('');
       // Get the values of what the person entered in search
-      var query = $(this).find("input[name='user_search']").val();
+      var query = $(this).find("input[name='topic_search']").val();
       // Run function to send API request to Twitter
-      getUser(query);
+      getTweets(query);
   }); // end click function
 }); // end document ready
 
 // Function to get users from Twitter - ?? Not sure how to write the API Call
-var getUser = function(query) {
+var getTweets = function(query) {
 
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
   OAuth.popup('twitter').done(function(twitterData) {
@@ -146,7 +25,7 @@ var getUser = function(query) {
          }
     }).done(function(search) {
          //result of the search here
-         showUser(search);
+         showTweet(search);
     }).fail(function(error) {
          //error management here
     });
@@ -154,51 +33,452 @@ var getUser = function(query) {
   }); // end oAuth popup
 };
 
-/* //Call to Twitter
-
-  $.ajax({
-    type: "GET",
-    url: "https://api.twitter.com/1.1/users/search.json?&geocode=42.94003620000001,-78.8677924,50mi&q=" + query,
-    dataType: "jsonp"
-  })
-
-  .done(function( twitterData ) {
-    console.log( "Data Saved: " + twitterData ); // can see in inspector tab under Network
-  }); */
-
-
-  /*.done(function() {
-    
-    // Show search results title
-      $('.user-search .resultsTitle').removeClass("hidden");
-
-      });
-
-    }).fail(function() {
-     
-    }); */
 
 // Function that appends search result to DOM
-var showUser = function(user) {
+var showTweet = function(tweets) {
 
-  console.log(user);
+  console.log(tweets);
   /*var image = result.find('.profile-img');
-  image.attr('src', users.profile_image_url);
+  image.attr('src', tweets.profile_image_url);
 
   var result = $('.user-template .user-result').clone();
   var name = result.find('.real-name');
-  name.append(user.name);
+  name.append(tweets.name);
 
   var screenName = result.find('.screen-name');
-  screenName.append(user.screen_name);
+  screenName.append(tweets.screen_name);
 
   var followers = result.find('.followers');
-  followers.append(user.followers_count);
+  followers.append(tweets.followers_count);
 
   var description = result.find('description');
-    description.append(user.description); 
+    description.append(tweets.description); 
 
   return result; */
 }; // end showUser function
 
 
+/*
+
+API document: https://dev.twitter.com/docs/api/1.1/get/search/tweets
+
+
+Twitter returns a tweets response object:
+
+{
+  "statuses": [
+    {
+      "coordinates": null,
+      "favorited": false,
+      "truncated": false,
+      "created_at": "Mon Sep 24 03:35:21 +0000 2012",
+      "id_str": "250075927172759552",
+      "entities": {
+        "urls": [
+ 
+        ],
+        "hashtags": [
+          {
+            "text": "freebandnames",
+            "indices": [
+              20,
+              34
+            ]
+          }
+        ],
+        "user_mentions": [
+ 
+        ]
+      },
+      "in_reply_to_user_id_str": null,
+      "contributors": null,
+      "text": "Aggressive Ponytail #freebandnames",
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "retweet_count": 0,
+      "in_reply_to_status_id_str": null,
+      "id": 250075927172759552,
+      "geo": null,
+      "retweeted": false,
+      "in_reply_to_user_id": null,
+      "place": null,
+      "user": {
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_background_tile": false,
+        "name": "Sean Cummings",
+        "profile_image_url": "http://a0.twimg.com/profile_images/2359746665/1v6zfgqo8g0d3mk7ii5s_normal.jpeg",
+        "created_at": "Mon Apr 26 06:01:55 +0000 2010",
+        "location": "LA, CA",
+        "follow_request_sent": null,
+        "profile_link_color": "0084B4",
+        "is_translator": false,
+        "id_str": "137238150",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "expanded_url": null,
+                "url": "",
+                "indices": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+ 
+            ]
+          }
+        },
+        "default_profile": true,
+        "contributors_enabled": false,
+        "favourites_count": 0,
+        "url": null,
+        "profile_image_url_https": "https://si0.twimg.com/profile_images/2359746665/1v6zfgqo8g0d3mk7ii5s_normal.jpeg",
+        "utc_offset": -28800,
+        "id": 137238150,
+        "profile_use_background_image": true,
+        "listed_count": 2,
+        "profile_text_color": "333333",
+        "lang": "en",
+        "followers_count": 70,
+        "protected": false,
+        "notifications": null,
+        "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_color": "C0DEED",
+        "verified": false,
+        "geo_enabled": true,
+        "time_zone": "Pacific Time (US & Canada)",
+        "description": "Born 330 Live 310",
+        "default_profile_image": false,
+        "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png",
+        "statuses_count": 579,
+        "friends_count": 110,
+        "following": null,
+        "show_all_inline_media": false,
+        "screen_name": "sean_cummings"
+      },
+      "in_reply_to_screen_name": null,
+      "source": "<a href=\"http://itunes.apple.com/us/app/twitter/id409789998?mt=12\" rel=\"nofollow\">Twitter for Mac</a>",
+      "in_reply_to_status_id": null
+    },
+    {
+      "coordinates": null,
+      "favorited": false,
+      "truncated": false,
+      "created_at": "Fri Sep 21 23:40:54 +0000 2012",
+      "id_str": "249292149810667520",
+      "entities": {
+        "urls": [
+ 
+        ],
+        "hashtags": [
+          {
+            "text": "FreeBandNames",
+            "indices": [
+              20,
+              34
+            ]
+          }
+        ],
+        "user_mentions": [
+ 
+        ]
+      },
+      "in_reply_to_user_id_str": null,
+      "contributors": null,
+      "text": "Thee Namaste Nerdz. #FreeBandNames",
+      "metadata": {
+        "iso_language_code": "pl",
+        "result_type": "recent"
+      },
+      "retweet_count": 0,
+      "in_reply_to_status_id_str": null,
+      "id": 249292149810667520,
+      "geo": null,
+      "retweeted": false,
+      "in_reply_to_user_id": null,
+      "place": null,
+      "user": {
+        "profile_sidebar_fill_color": "DDFFCC",
+        "profile_sidebar_border_color": "BDDCAD",
+        "profile_background_tile": true,
+        "name": "Chaz Martenstein",
+        "profile_image_url": "http://a0.twimg.com/profile_images/447958234/Lichtenstein_normal.jpg",
+        "created_at": "Tue Apr 07 19:05:07 +0000 2009",
+        "location": "Durham, NC",
+        "follow_request_sent": null,
+        "profile_link_color": "0084B4",
+        "is_translator": false,
+        "id_str": "29516238",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "expanded_url": null,
+                "url": "http://bullcityrecords.com/wnng/",
+                "indices": [
+                  0,
+                  32
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+ 
+            ]
+          }
+        },
+        "default_profile": false,
+        "contributors_enabled": false,
+        "favourites_count": 8,
+        "url": "http://bullcityrecords.com/wnng/",
+        "profile_image_url_https": "https://si0.twimg.com/profile_images/447958234/Lichtenstein_normal.jpg",
+        "utc_offset": -18000,
+        "id": 29516238,
+        "profile_use_background_image": true,
+        "listed_count": 118,
+        "profile_text_color": "333333",
+        "lang": "en",
+        "followers_count": 2052,
+        "protected": false,
+        "notifications": null,
+        "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/9423277/background_tile.bmp",
+        "profile_background_color": "9AE4E8",
+        "verified": false,
+        "geo_enabled": false,
+        "time_zone": "Eastern Time (US & Canada)",
+        "description": "You will come to Durham, North Carolina. I will sell you some records then, here in Durham, North Carolina. Fun will happen.",
+        "default_profile_image": false,
+        "profile_background_image_url": "http://a0.twimg.com/profile_background_images/9423277/background_tile.bmp",
+        "statuses_count": 7579,
+        "friends_count": 348,
+        "following": null,
+        "show_all_inline_media": true,
+        "screen_name": "bullcityrecords"
+      },
+      "in_reply_to_screen_name": null,
+      "source": "web",
+      "in_reply_to_status_id": null
+    },
+    {
+      "coordinates": null,
+      "favorited": false,
+      "truncated": false,
+      "created_at": "Fri Sep 21 23:30:20 +0000 2012",
+      "id_str": "249289491129438208",
+      "entities": {
+        "urls": [
+ 
+        ],
+        "hashtags": [
+          {
+            "text": "freebandnames",
+            "indices": [
+              29,
+              43
+            ]
+          }
+        ],
+        "user_mentions": [
+ 
+        ]
+      },
+      "in_reply_to_user_id_str": null,
+      "contributors": null,
+      "text": "Mexican Heaven, Mexican Hell #freebandnames",
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "retweet_count": 0,
+      "in_reply_to_status_id_str": null,
+      "id": 249289491129438208,
+      "geo": null,
+      "retweeted": false,
+      "in_reply_to_user_id": null,
+      "place": null,
+      "user": {
+        "profile_sidebar_fill_color": "99CC33",
+        "profile_sidebar_border_color": "829D5E",
+        "profile_background_tile": false,
+        "name": "Thomas John Wakeman",
+        "profile_image_url": "http://a0.twimg.com/profile_images/2219333930/Froggystyle_normal.png",
+        "created_at": "Tue Sep 01 21:21:35 +0000 2009",
+        "location": "Kingston New York",
+        "follow_request_sent": null,
+        "profile_link_color": "D02B55",
+        "is_translator": false,
+        "id_str": "70789458",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "expanded_url": null,
+                "url": "",
+                "indices": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+ 
+            ]
+          }
+        },
+        "default_profile": false,
+        "contributors_enabled": false,
+        "favourites_count": 19,
+        "url": null,
+        "profile_image_url_https": "https://si0.twimg.com/profile_images/2219333930/Froggystyle_normal.png",
+        "utc_offset": -18000,
+        "id": 70789458,
+        "profile_use_background_image": true,
+        "listed_count": 1,
+        "profile_text_color": "3E4415",
+        "lang": "en",
+        "followers_count": 63,
+        "protected": false,
+        "notifications": null,
+        "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme5/bg.gif",
+        "profile_background_color": "352726",
+        "verified": false,
+        "geo_enabled": false,
+        "time_zone": "Eastern Time (US & Canada)",
+        "description": "Science Fiction Writer, sort of. Likes Superheroes, Mole People, Alt. Timelines.",
+        "default_profile_image": false,
+        "profile_background_image_url": "http://a0.twimg.com/images/themes/theme5/bg.gif",
+        "statuses_count": 1048,
+        "friends_count": 63,
+        "following": null,
+        "show_all_inline_media": false,
+        "screen_name": "MonkiesFist"
+      },
+      "in_reply_to_screen_name": null,
+      "source": "web",
+      "in_reply_to_status_id": null
+    },
+    {
+      "coordinates": null,
+      "favorited": false,
+      "truncated": false,
+      "created_at": "Fri Sep 21 22:51:18 +0000 2012",
+      "id_str": "249279667666817024",
+      "entities": {
+        "urls": [
+ 
+        ],
+        "hashtags": [
+          {
+            "text": "freebandnames",
+            "indices": [
+              20,
+              34
+            ]
+          }
+        ],
+        "user_mentions": [
+ 
+        ]
+      },
+      "in_reply_to_user_id_str": null,
+      "contributors": null,
+      "text": "The Foolish Mortals #freebandnames",
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "retweet_count": 0,
+      "in_reply_to_status_id_str": null,
+      "id": 249279667666817024,
+      "geo": null,
+      "retweeted": false,
+      "in_reply_to_user_id": null,
+      "place": null,
+      "user": {
+        "profile_sidebar_fill_color": "BFAC83",
+        "profile_sidebar_border_color": "615A44",
+        "profile_background_tile": true,
+        "name": "Marty Elmer",
+        "profile_image_url": "http://a0.twimg.com/profile_images/1629790393/shrinker_2000_trans_normal.png",
+        "created_at": "Mon May 04 00:05:00 +0000 2009",
+        "location": "Wisconsin, USA",
+        "follow_request_sent": null,
+        "profile_link_color": "3B2A26",
+        "is_translator": false,
+        "id_str": "37539828",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "expanded_url": null,
+                "url": "http://www.omnitarian.me",
+                "indices": [
+                  0,
+                  24
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": [
+ 
+            ]
+          }
+        },
+        "default_profile": false,
+        "contributors_enabled": false,
+        "favourites_count": 647,
+        "url": "http://www.omnitarian.me",
+        "profile_image_url_https": "https://si0.twimg.com/profile_images/1629790393/shrinker_2000_trans_normal.png",
+        "utc_offset": -21600,
+        "id": 37539828,
+        "profile_use_background_image": true,
+        "listed_count": 52,
+        "profile_text_color": "000000",
+        "lang": "en",
+        "followers_count": 608,
+        "protected": false,
+        "notifications": null,
+        "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/106455659/rect6056-9.png",
+        "profile_background_color": "EEE3C4",
+        "verified": false,
+        "geo_enabled": false,
+        "time_zone": "Central Time (US & Canada)",
+        "description": "Cartoonist, Illustrator, and T-Shirt connoisseur",
+        "default_profile_image": false,
+        "profile_background_image_url": "http://a0.twimg.com/profile_background_images/106455659/rect6056-9.png",
+        "statuses_count": 3575,
+        "friends_count": 249,
+        "following": null,
+        "show_all_inline_media": true,
+        "screen_name": "Omnitarian"
+      },
+      "in_reply_to_screen_name": null,
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "in_reply_to_status_id": null
+    }
+  ],
+  "search_metadata": {
+    "max_id": 250126199840518145,
+    "since_id": 24012619984051000,
+    "refresh_url": "?since_id=250126199840518145&q=%23freebandnames&result_type=mixed&include_entities=1",
+    "next_results": "?max_id=249279667666817023&q=%23freebandnames&count=4&include_entities=1&result_type=mixed",
+    "count": 4,
+    "completed_in": 0.035,
+    "since_id_str": "24012619984051000",
+    "query": "%23freebandnames",
+    "max_id_str": "250126199840518145"
+  }
+}
+
+*/
