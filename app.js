@@ -25,10 +25,10 @@ var getTweets = function(query) {
          }
     
     }).done(function(search) {
-        //showTweet(search);
-        $.each(search.tweets, function(i, tweets) {
+        //formatTweet(search);
+        $.each(search.tweets, function(i, tweet) {
         //store results in displayResults variable
-        var displayResults = showTweet(tweets);
+        var displayResults = formatTweet(tweet);
         //append results to .topic-results
         $('.topic-results').append(displayResults);
         });
@@ -41,7 +41,7 @@ var getTweets = function(query) {
 };
 
 // Function that appends search result to DOM
-var showTweet = function(tweets) {
+var formatTweet = function(tweets) {
 
   //console.log(tweets);
 
