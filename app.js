@@ -25,9 +25,9 @@ var getTweets = function(query) {
          }
     
     }).done(function(search) {
-        //formatTweet(search);
+        formatTweet(search);
         $.each(search.tweets, function(index, value) {
-          console.log(value);
+          console.log(value); // not working
         //store results in displayResults variable
         //var displayResults = formatTweet(value);
         //append results to .topic-results
