@@ -27,11 +27,11 @@ var getTweets = function(query) {
     }).done(function(search) {
         formatTweet(search);
         $.each(search.tweets, function(index, value) {
-          console.log(value); // not working
+        //console.log(value); // not working
         //store results in displayResults variable
-        //var displayResults = formatTweet(value);
+        var tweets = formatTweet(value);
         //append results to .topic-results
-        //$('.topic-results').append(displayResults);
+        $('.topic-results').append(displayResults);
         });
 
     }).fail(function(error) {
