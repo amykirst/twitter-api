@@ -12,7 +12,7 @@ $(document).ready(function() {
   }); // end click function
 }); // end document ready
 
-// Function to get users from Twitter - ?? Not sure how to write the API Call
+// Function to get tweets from Twitter 
 var getTweets = function(query) {
 
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
@@ -27,7 +27,9 @@ var getTweets = function(query) {
     }).done(function(search) {
         //showTweet(search);
         $.each(search.tweets, function(i, tweets) {
+        //store results in displayResults variable
         var displayResults = showTweet(tweets);
+        //append results to .topic-results
         $('.topic-results').append(displayResults);
         });
 
@@ -43,6 +45,7 @@ var showTweet = function(tweets) {
 
   //console.log(tweets);
 
+  // clone template
   var result = $('.topic-template .topic-results').clone();
 
   var image = result.find('.profile-img');
