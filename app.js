@@ -23,9 +23,13 @@ var getTweets = function(query) {
              q: query,
              geocode: '42.94003620000001,-78.8677924,50mi'
          }
+
     }).done(function(search) {
-         //result of the search here
-         showTweet(search);
+        $.each(search.tweets, function(i, tweets) {
+        var displayResults = showTweet(tweets);
+        $('.topic-results').append(displayResults);
+      });
+
     }).fail(function(error) {
          //error management here
     });
@@ -49,6 +53,9 @@ var showTweet = function(tweets) {
 
   var screenName = result.find('.screen-name');
   screenName.append(tweets.user.screen_name);
+
+  var location = result.find('location');
+  location.append(tweets.user.location);
 
   var time = result.find('.time');
   time.append(tweets.created_at);
