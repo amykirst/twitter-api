@@ -26,9 +26,9 @@ var getTweets = function(query) {
     
     }).done(function(search) {
         //formatTweet(search);
-        $.each(search.tweets, function(i, tweet) {
+        $.each(search.tweets, function(index, value) {
         //store results in displayResults variable
-        var displayResults = formatTweet(tweet);
+        var displayResults = formatTweet(value);
         //append results to .topic-results
         $('.topic-results').append(displayResults);
         });
@@ -47,8 +47,9 @@ var formatTweet = function(tweets) {
 
   // clone template
   var result = $('.topic-template .topic-results').clone();
+  console.log(result);
 
-  var image = result.find('.profile-img');
+  /*var image = result.find('.profile-img');
   image.attr('src', tweets.profile_image_url);
 
   var status = result.find('.status');
@@ -61,7 +62,7 @@ var formatTweet = function(tweets) {
   location.append(tweets.user.location);
 
   var time = result.find('.time');
-  time.append(tweets.created_at);
+  time.append(tweets.created_at); */
 
   return result; 
 }; // end showUser function
