@@ -25,11 +25,11 @@ var getTweets = function(query) {
          }
     
     }).done(function(tweets) {
-        showTweet(tweets);
-        //$.each(search.tweets, function(i, tweets) {
-        //var displayResults = showTweet(tweets);
-        //$('.topic-results').append(displayResults);
-      
+        //showTweet(tweets);
+        $.each(search.tweets, function(i, tweets) {
+        var displayResults = showTweet(tweets);
+        $('.topic-results').append(displayResults);
+        });
 
     }).fail(function(error) {
          //error management here
