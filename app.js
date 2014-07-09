@@ -24,7 +24,7 @@ var getTweets = function(query) {
              geocode: '42.94003620000001,-78.8677924,50mi'
          }
     
-    }).done(function(tweets) {
+    }).done(function(search) {
         //showTweet(tweets);
         $.each(search.tweets, function(i, tweets) {
         var displayResults = showTweet(tweets);
