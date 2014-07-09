@@ -25,7 +25,7 @@ var getTweets = function(query) {
          }
     
     }).done(function(search) {
-        //showTweet(tweets);
+        //showTweet(search);
         $.each(search.tweets, function(i, tweets) {
         var displayResults = showTweet(tweets);
         $('.topic-results').append(displayResults);
@@ -41,9 +41,9 @@ var getTweets = function(query) {
 // Function that appends search result to DOM
 var showTweet = function(tweets) {
 
-  console.log(tweets);
+  //console.log(tweets);
 
-  /* var result = $('.topic-template .topic-results').clone();
+  var result = $('.topic-template .topic-results').clone();
 
   var image = result.find('.profile-img');
   image.attr('src', tweets.profile_image_url);
@@ -60,7 +60,7 @@ var showTweet = function(tweets) {
   var time = result.find('.time');
   time.append(tweets.created_at);
 
-  return result; */
+  return result; 
 }; // end showUser function
 
 
