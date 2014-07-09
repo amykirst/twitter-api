@@ -23,13 +23,13 @@ var getTweets = function(query) {
              q: query,
              geocode: '42.94003620000001,-78.8677924,50mi'
          }
-
-    }).done(function(search) {
-        showTweet(search);
+    
+    }).done(function(tweets) {
+        showTweet(tweets);
         //$.each(search.tweets, function(i, tweets) {
         //var displayResults = showTweet(tweets);
         //$('.topic-results').append(displayResults);
-      });
+      
 
     }).fail(function(error) {
          //error management here
@@ -37,7 +37,6 @@ var getTweets = function(query) {
 
   }); // end oAuth popup
 };
-
 
 // Function that appends search result to DOM
 var showTweet = function(tweets) {
