@@ -25,7 +25,7 @@ var getTweets = function(query) {
          }
 
     }).done(function(search) {
-        showTweet(search)
+        showTweet(search);
         //$.each(search.tweets, function(i, tweets) {
         //var displayResults = showTweet(tweets);
         //$('.topic-results').append(displayResults);
