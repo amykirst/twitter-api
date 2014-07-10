@@ -58,7 +58,7 @@ var formatTweet = function(tweets) {
   status.append(tweets.text);
 
   var screenName = result.find('.screen-name');
-  screenName.append(tweets.user.screen_name);
+  screenName.append(tweets.statuses.user.screen_name);
 
   var location = result.find('location');
   location.append(tweets.user.location);
