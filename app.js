@@ -69,7 +69,7 @@ var getTweets = function(query) {
     
 
     }).done(function() {
-        $.each(tweets.statuses, function(index, tweet) {
+        $.each(tweet.statuses, function(index, tweet) {
           console.log(tweet);
         //store results in tweets variable
         var tweets = formatTweet(tweet);
