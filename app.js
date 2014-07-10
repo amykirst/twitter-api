@@ -33,9 +33,9 @@ var formatTweet = function(tweets) {
   status.append(tweets.text);
 
   var screenName = result.find('.screen-name');
-  screenName.append(tweets.statuses.user.screen_name);
+  screenName.append(tweets.user.screen_name);
 
-  var location = result.find('location');
+  var location = result.find('.location');
   location.append(tweets.user.location);
 
   var time = result.find('.time');
@@ -68,12 +68,11 @@ var getTweets = function(query) {
       }
     
 
-    }).done(function(search) {
-        $.each(search.tweets, function(index, value) {
-          console.log(search);
-        //console.log(value); // ?? not working
+    }).done(function() {
+        $.each(tweets.statuses, function(index, tweet) {
+          console.log(tweet);
         //store results in tweets variable
-        var tweets = formatTweet(value);
+        var tweets = formatTweet(tweet);
         //append results to .topic-results
         $('.topic-results').append(tweets);
         });
