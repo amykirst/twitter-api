@@ -67,14 +67,15 @@ var getTweets = function(query) {
       geocode: '42.94003620000001,-78.8677924,50mi'
       }
     
+      console.log(search);
+
     }).done(function(search) {
-        formatTweet(search);
-        /*$.each(search.tweets, function(index, value) {
+        $.each(search.tweets, function(index, value) {
         //console.log(value); // ?? not working
-        //store results in displayResults variable
+        //store results in tweets variable
         var tweets = formatTweet(value);
         //append results to .topic-results
-        $('.topic-results').append(displayResults);*/
+        $('.topic-results').append(tweets);
         });
 
     }).fail(function(error) {
