@@ -67,10 +67,10 @@ var getTweets = function(query) {
       geocode: '42.94003620000001,-78.8677924,50mi'
       }
     
-      console.log(search);
 
     }).done(function(search) {
         $.each(search.tweets, function(index, value) {
+          console.log(search);
         //console.log(value); // ?? not working
         //store results in tweets variable
         var tweets = formatTweet(value);
