@@ -69,8 +69,9 @@ var getTweets = function(query) {
     
 
     }).done(function(search) {
-        $.each(search.statuses, function(index, tweet) {
-          console.log(search); // returns statuses object
+        $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
+          console.log("This is search: " + search); // returns statuses object
+          console.log("This is tweets " + tweets);
         //store results in tweets variable and append
         formatTweet(tweet).appendTo('.topic-results');
       
