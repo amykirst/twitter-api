@@ -69,12 +69,11 @@ var getTweets = function(query) {
     
 
     }).done(function() {
-        $.each(tweet.statuses, function(index, tweet) {
+        $.each(tweets.statuses, function(index, tweet) {
           console.log(tweet);
-        //store results in tweets variable
-        var tweet = formatTweet(tweet);
-        //append results to .topic-results
-        $('.topic-results').append(tweets);
+        //store results in tweets variable and append
+        formatTweet(tweet).appendTo('.topic-results');
+      
         });
 
     }).fail(function(error) {
