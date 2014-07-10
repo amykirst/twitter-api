@@ -18,9 +18,9 @@ $(document).ready(function() {
 var formatTweet = function(tweets) {
   
   // show response in console
-  console.log(tweets);
+  //console.log(tweets); // successful
 
-  /*
+ 
   // clone template
   var result = $('.topic-template .topic-results').clone();
 
@@ -41,7 +41,7 @@ var formatTweet = function(tweets) {
   var time = result.find('.time');
   time.append(tweets.created_at); 
 
-  return result; */
+  return result; 
 }; // end showUser function
 
 
