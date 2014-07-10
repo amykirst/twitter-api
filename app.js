@@ -84,7 +84,7 @@ var getTweets = function(query) {
       $('.topic-results').append(errorElem);
     });
   }); // end oAuth popup
-}
+};
 
 /*
 
