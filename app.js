@@ -61,9 +61,9 @@ var getTweets = function(query) {
 
     var search = twitterData.get('/1.1/search/tweets.json', {
       data: {
-          q: query,
-          geocode: '42.94003620000001,-78.8677924,50mi'
-         }
+      q: query,
+      geocode: '42.94003620000001,-78.8677924,50mi'
+      }
     
     }).done(function(search) {
         formatTweet(search);
