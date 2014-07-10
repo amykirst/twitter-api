@@ -16,7 +16,8 @@ $(document).ready(function() {
 
 // Function that appends search result to DOM
 var formatTweet = function(tweets) {
-
+  
+  // show response in console
   console.log(tweets);
 
   /*
