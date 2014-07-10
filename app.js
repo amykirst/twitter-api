@@ -18,7 +18,7 @@ var getTweets = function(query) {
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
   OAuth.popup('twitter').done(function(twitterData) {
 
-    twitterData.get('/1.1/search/tweets.json', {
+    var search = twitterData.get('/1.1/search/tweets.json', {
          data: {
              q: query,
              geocode: '42.94003620000001,-78.8677924,50mi'
@@ -27,7 +27,7 @@ var getTweets = function(query) {
     }).done(function(search) {
         formatTweet(search);
         $.each(search.tweets, function(index, value) {
-        //console.log(value); // not working
+        //console.log(value); // ?? not working
         //store results in displayResults variable
         var tweets = formatTweet(value);
         //append results to .topic-results
@@ -49,7 +49,7 @@ var formatTweet = function(tweets) {
   // clone template
   var result = $('.topic-template .topic-results').clone();
 
-  // console.log(result); not logging result
+  // console.log(result); // ?? not logging result
 
   var image = result.find('.profile-img');
   image.attr('src', tweets.profile_image_url);
