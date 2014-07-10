@@ -83,9 +83,8 @@ var getTweets = function(query) {
       // append the error message to the results area
       $('.topic-results').append(errorElem);
     });
-  }; // end oAuth popup
-
-
+  }); // end oAuth popup
+}
 
 /*
 
