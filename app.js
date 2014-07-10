@@ -70,7 +70,7 @@ var getTweets = function(query) {
 
     }).done(function(search) {
         $.each(tweets.statuses, function(index, tweet) {
-          console.log(tweet);
+          console.log(tweets); // returns as undefined
         //store results in tweets variable and append
         formatTweet(tweet).appendTo('.topic-results');
       
