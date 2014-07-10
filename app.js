@@ -68,7 +68,7 @@ var getTweets = function(query) {
       }
     
 
-    }).done(function() {
+    }).done(function(search) {
         $.each(tweets.statuses, function(index, tweet) {
           console.log(tweet);
         //store results in tweets variable and append
