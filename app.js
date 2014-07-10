@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 
 // Function that appends search result to DOM
-var formatTweet = function(tweets) {
+var formatTweet = function(tweet) {
   
   // show response in console
   //console.log(tweets); // successful
@@ -27,19 +27,19 @@ var formatTweet = function(tweets) {
   // console.log(result); // ?? not logging result
 
   var image = result.find('.profile-img');
-  image.attr('src', tweets.profile_image_url);
+  image.attr('src', tweet.profile_image_url);
 
   var status = result.find('.status');
-  status.append(tweets.text);
+  status.append(tweet.text);
 
   var screenName = result.find('.screen-name');
-  screenName.append(tweets.user.screen_name);
+  screenName.append(tweet.user.screen_name);
 
   var location = result.find('.location');
-  location.append(tweets.user.location);
+  location.append(tweet.user.location);
 
   var time = result.find('.time');
-  time.append(tweets.created_at); 
+  time.append(tweet.created_at); 
 
   return result; 
 }; // end showUser function
