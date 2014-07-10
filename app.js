@@ -70,8 +70,8 @@ var getTweets = function(query) {
 
     }).done(function(search) {
         $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
-          console.log("This is search: " + search); // returns statuses object
-          console.log("This is tweets " + tweets);
+          console.log("This is search: " + search);
+          console.log("This is tweets " + tweets); // says tweets is not defined
         //store results in tweets variable and append
         formatTweet(tweet).appendTo('.topic-results');
       
