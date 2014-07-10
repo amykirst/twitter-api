@@ -68,7 +68,7 @@ var getTweets = function(query) {
       }
     
 
-    }).done(function(search) {
+    }).done(function(tweets) {
         $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
           //console.log("This is search: " + search);
           console.log("This is tweets " + tweets); // says tweets is not defined
