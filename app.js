@@ -17,8 +17,9 @@ $(document).ready(function() {
 // Function that appends search result to DOM
 var formatTweet = function(tweets) {
 
-  //console.log(tweets);
+  console.log(tweets);
 
+  /*
   // clone template
   var result = $('.topic-template .topic-results').clone();
 
@@ -39,7 +40,7 @@ var formatTweet = function(tweets) {
   var time = result.find('.time');
   time.append(tweets.created_at); 
 
-  return result; 
+  return result; */
 }; // end showUser function
 
 
@@ -67,12 +68,12 @@ var getTweets = function(query) {
     
     }).done(function(search) {
         formatTweet(search);
-        $.each(search.tweets, function(index, value) {
+        /*$.each(search.tweets, function(index, value) {
         //console.log(value); // ?? not working
         //store results in displayResults variable
         var tweets = formatTweet(value);
         //append results to .topic-results
-        $('.topic-results').append(displayResults);
+        $('.topic-results').append(displayResults);*/
         });
 
     }).fail(function(error) {
