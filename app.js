@@ -61,7 +61,7 @@ var getTweets = function(query) {
   OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
   OAuth.popup('twitter').done(function(twitterData) {
 
-    var search = twitterData.get('/1.1/search/tweets.json', {
+    twitterData.get('/1.1/search/tweets.json', {
       data: {
       q: query,
       geocode: '42.94003620000001,-78.8677924,50mi'
@@ -70,7 +70,6 @@ var getTweets = function(query) {
 
     }).done(function(tweets) {
         $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
-          //console.log("This is search: " + search);
           console.log("This is tweets " + tweets); // says tweets is not defined
         //store results in tweets variable and append
         formatTweet(tweet).appendTo('.topic-results');
