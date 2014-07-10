@@ -12,34 +12,7 @@ $(document).ready(function() {
   }); // end click function
 }); // end document ready
 
-// Function to get tweets from Twitter 
-var getTweets = function(query) {
 
-  OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
-  OAuth.popup('twitter').done(function(twitterData) {
-
-    var search = twitterData.get('/1.1/search/tweets.json', {
-         data: {
-             q: query,
-             geocode: '42.94003620000001,-78.8677924,50mi'
-         }
-    
-    }).done(function(search) {
-        formatTweet(search);
-        $.each(search.tweets, function(index, value) {
-        //console.log(value); // ?? not working
-        //store results in displayResults variable
-        var tweets = formatTweet(value);
-        //append results to .topic-results
-        $('.topic-results').append(displayResults);
-        });
-
-    }).fail(function(error) {
-         //error management here
-    });
-
-  }); // end oAuth popup
-};
 
 // Function that appends search result to DOM
 var formatTweet = function(tweets) {
@@ -68,6 +41,48 @@ var formatTweet = function(tweets) {
 
   return result; 
 }; // end showUser function
+
+
+// takes error string and turns it into displayable DOM element
+var showError = function(error){
+  var errorElem = $('.topic-template .error').clone();
+  var errorText = '<p>' + error + '</p>';
+  // append error text to the cloned error template
+  errorElem.append(errorText);
+};
+
+
+
+// Function to get tweets from Twitter 
+var getTweets = function(query) {
+
+  OAuth.initialize('oMQua1CuWerqGKRwqVkzDx5uijo')
+  OAuth.popup('twitter').done(function(twitterData) {
+
+    var search = twitterData.get('/1.1/search/tweets.json', {
+      data: {
+          q: query,
+          geocode: '42.94003620000001,-78.8677924,50mi'
+         }
+    
+    }).done(function(search) {
+        formatTweet(search);
+        $.each(search.tweets, function(index, value) {
+        //console.log(value); // ?? not working
+        //store results in displayResults variable
+        var tweets = formatTweet(value);
+        //append results to .topic-results
+        $('.topic-results').append(displayResults);
+        });
+
+    }).fail(function(error) {
+      var errorElem = showError(error);
+      // append the error message to the results area
+      $('.topic-results').append(errorElem);
+    });
+
+  }); // end oAuth popup
+};
 
 
 /*
