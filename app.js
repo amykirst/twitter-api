@@ -4,7 +4,7 @@ $(document).ready(function() {
       // prevent form refresh
       event.preventDefault();
       // zero out results if previous search has run
-      $('.topic-results').html('');
+      $('#results').html('');
       // Get the values of what the person entered in search
       var query = $(this).find("input[name='topic_search']").val();
       // Run function to send API request to Twitter
@@ -23,8 +23,7 @@ var formatTweet = function(tweet) {
  
   // clone template
   var result = $('.topic-template .topic-results').clone();
-
-  // console.log(result); // ?? not logging result
+  //console.log(result);
 
   var image = result.find('.profile-img');
   image.attr('src', tweet.profile_image_url);
