@@ -33,21 +33,22 @@ body {
 	min-height: 100%; 
 }
 
-.user-search, .topic-search {
+.topic-search {
 	margin-top: 50px;
 
 }
 
-.user-result, .topic-result {
+.topic-results {
 	padding-bottom: 1px; /* To force wrapper to bottom of window edge (paragraph collapsing) */
 	margin-top: 15px;
+	border-bottom: 1px solid #003043;
 }
 
-.user-result img, .topic-result img {
+.topic-results img {
 	float: left;
 }
 
-.user-details, .topic-details { /* ?? Added class to prevent text from wrapping around image. Is there a better way? */
+.topic-details { /* ?? Added class to prevent text from wrapping around image. Is there a better way? */
 	margin-left: 95px;
 }
 
@@ -104,7 +105,7 @@ header img {
 	color: #003043;
 }
 
-input[name="topic_search"], input[name="user_search"] {
+input[name="topic_search"] {
 	width:70%;
 	height: 55px;
 	-webkit-border-radius: 5px;
@@ -116,7 +117,7 @@ input[name="topic_search"], input[name="user_search"] {
 	margin-bottom: 25px;
 }
 
-input[name="topic_search"], input[name="user_search"], input[type="submit"] {
+input[name="topic_search"], input[type="submit"] {
 	height: 55px;
 	font-size: 16px;
 	font-weight: bold;
@@ -170,7 +171,7 @@ a:link {
 		width: 40%;
 	}
 
-	input[name="topic_search"], input[name="user_search"] {
+	input[name="topic_search"] {
 	width:90%;
 	}
 }
@@ -183,7 +184,7 @@ a:link {
 		line-height: 2.8em;
 	}
 
-	.user-search > h2, .topic-search > h2 {
+	.topic-search > h2 {
 		font-size: 16px;
 		margin-bottom: 15px;
 	}
@@ -194,7 +195,7 @@ a:link {
 	}
 
 
-	input[name="topic_search"], input[name="user_search"], input[type="submit"] {
+	input[name="topic_search"], input[type="submit"] {
 		font-size: 14px;
 		font-weight: normal;
 	}

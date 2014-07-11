@@ -26,7 +26,7 @@ var formatTweet = function(tweet) {
   //console.log(result);
 
   var image = result.find('.profile-img');
-  image.attr('src', tweet.profile_image_url);
+  image.attr('src', tweet.user.profile_image_url);
 
   var status = result.find('.status');
   status.append(tweet.text);
@@ -74,6 +74,7 @@ var getTweets = function(query) {
         //formatTweet(tweet).appendTo('#results');
         var currentTweet = formatTweet(tweet);
         $("#results").append(currentTweet);
+        $(".resultsTitle").removeClass("hidden");
         });
 
     }).fail(function(error) {
