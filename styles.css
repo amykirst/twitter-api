@@ -41,7 +41,7 @@ body {
 .topic-results {
 	padding-bottom: 1px; /* To force wrapper to bottom of window edge (paragraph collapsing) */
 	margin-top: 15px;
-	border-bottom: 1px solid #003043;
+	border-bottom: 1px solid #ebebeb;
 }
 
 .topic-results img {
@@ -94,7 +94,7 @@ header img {
 	line-height: 2em;
 }
 
-.user-search > h2, .topic-search > h2 {
+.topic-search > h2 {
 	font-size: 24px;
 	color: #003043;
 	margin-bottom: 15px;
