@@ -5,6 +5,8 @@ $(document).ready(function() {
       event.preventDefault();
       // zero out results if previous search has run
       $('#results').html('');
+      // zero out error message from previous search
+      $('#error').html('');
       // Get the values of what the person entered in search
       var query = $(this).find("input[name='topic_search']").val();
       // Run function to send API request to Twitter
@@ -46,10 +48,12 @@ var formatTweet = function(tweet) {
 
 // takes error string and turns it into displayable DOM element
 var showError = function(error){
+  // copy error template
   var errorElem = $('.topic-template .error').clone();
+  // add error text to paragraph
   var errorText = '<p>' + error + '</p>';
-  // append error text to the cloned error template
-  errorElem.append(errorText);
+  // add error text to the cloned error template
+  $("#error").append(errorElem);
 };
 
 
@@ -73,8 +77,9 @@ var getTweets = function(query) {
         //store results in tweets variable and append
         //formatTweet(tweet).appendTo('#results');
         var currentTweet = formatTweet(tweet);
-        $("#results").append(currentTweet);
-        $(".resultsTitle").removeClass("hidden");
+        $('#results').append(currentTweet);
+        // show Search Results title
+        $('.resultsTitle').removeClass('hidden');
         });
 
     }).fail(function(error) {
