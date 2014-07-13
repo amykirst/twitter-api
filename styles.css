@@ -1,205 +1,211 @@
 /* ----------------------- CSS Reset ----------------------- */
-
-a img { border: 0; }
-h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; line-height: 1em; font-size: 100%; }
-p { margin: 0 0 1em 0; }
-body { margin: 0; }
-*:focus { outline: 0; } /* Prevent focus outline for Chrome */
-
-
-
-/* ----------------------- Styles ----------------------- */
-.hidden {
-	display: none;
+a img {
+  border:0
 }
 
-html, body {
-	height: 100%;
+h1,h2,h3,h4,h5,h6 {
+  margin:0;
+  padding:0;
+  line-height:1em;
+  font-size:100%
+}
+
+p {
+  margin:0 0 1em
 }
 
 body {
-	background-color: #003043;
-	font-family: Arial, serif;
-	font-size: 14px;
-	min-width: 303px;
+  margin:0
+}
+
+:focus {
+  outline:0
+}
+
+/* Prevent focus outline for Chrome */
+/* ----------------------- Styles ----------------------- */
+.hidden {
+  display:none
+}
+
+html,body {
+  height:100%
+}
+
+body {
+  background-color:#003043;
+  font-family:Arial,serif;
+  font-size:14px;
+  min-width:303px
 }
 
 .wrapper {
-	background-color: #fff;
-	width: 66%;
-	margin: 0 auto;
-	padding: 50px 50px 0 50px;
-	box-shadow: 6px 0 4px -4px #222 , -6px 0 4px -4px #222;
-	min-height: 100%; 
+  background-color:#fff;
+  width:66%;
+  margin:0 auto;
+  padding:50px 50px 0;
+  box-shadow:6px 0 4px -4px #222 ,-6px 0 4px -4px #222;
+  min-height:100%
 }
 
 .topic-search {
-	margin-top: 50px;
-
+  margin-top:50px
 }
 
 .topic-results {
-	padding-bottom: 1px; /* To force wrapper to bottom of window edge (paragraph collapsing) */
-	margin-top: 15px;
-	border-bottom: 1px solid #ebebeb;
+  padding-bottom:1px;
+/* To force wrapper to bottom of window edge (paragraph collapsing) */
+  margin-top:15px;
+  border-bottom:1px solid #ebebeb
 }
 
 .topic-results img {
-	float: left;
+  float:left
 }
 
-.topic-details { /* ?? Added class to prevent text from wrapping around image. Is there a better way? */
-	margin-left: 95px;
+.topic-details {
+/* ?? Added class to prevent text from wrapping around image. Is there a better way? */
+  margin-left:95px
 }
 
 header img {
-	display: block;
-	margin: 0 auto;
+  display:block;
+  margin:0 auto
 }
 
-.ribbon { 
-	background: #003043; 
-	position: relative; 
-	height: 50px; 
-	width: 66%; 
-	margin-left: auto;
-	margin-right: auto;
+.ribbon {
+  background:#003043;
+  position:relative;
+  height:50px;
+  width:66%;
+  margin-left:auto;
+  margin-right:auto
 }
 
-.ribbon:before, .ribbon:after { 
-	content: ''; 
-	position: absolute; 
-	height:0; 
-	border: 25px solid transparent; 
-	top: 0; 
-	width: 0; 
-	border-top-color: #003043; 
-	border-bottom-color: #003043; 
-
+.ribbon:before,.ribbon:after {
+  content:'';
+  position:absolute;
+  height:0;
+  border:25px solid transparent;
+  top:0;
+  width:0;
+  border-top-color:#003043;
+  border-bottom-color:#003043
 }
 
-.ribbon:before { 
-	left: -25px; 
+.ribbon:before {
+  left:-25px
 }
 
-.ribbon:after { 
-	right: -25px; 
+.ribbon:after {
+  right:-25px
 }
 
 .title {
-	color: #fff;
-	font-size: 25px;
-	font-family: Georgia, Times, "Times New Roman", serif;
-	text-align: center;
-	line-height: 2em;
+  color:#fff;
+  font-size:25px;
+  font-family:Georgia,Times,"Times New Roman",serif;
+  text-align:center;
+  line-height:2em
 }
 
 .topic-search > h2 {
-	font-size: 24px;
-	color: #003043;
-	margin-bottom: 15px;
+  font-size:24px;
+  color:#003043;
+  margin-bottom:15px
 }
 
 .description {
-	font-size: 14px;
-	color: #003043;
+  font-size:14px;
+  color:#003043
 }
 
 input[name="topic_search"] {
-	width:70%;
-	height: 55px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #a1a1a1;
-	background-color: #ebebeb;
-	padding: 0 10px 0 10px;
-	margin-bottom: 25px;
+  width:70%;
+  height:55px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  border:1px solid #a1a1a1;
+  background-color:#ebebeb;
+  padding:0 10px;
+  margin-bottom:25px
 }
 
-input[name="topic_search"], input[type="submit"] {
-	height: 55px;
-	font-size: 16px;
-	font-weight: bold;
-	-webkit-appearance: none;
-	-moz-appearance: none; /*override iphone styling */
+input[name="topic_search"],input[type="submit"] {
+  height:55px;
+  font-size:16px;
+  font-weight:700;
+  -webkit-appearance:none;
+  -moz-appearance:none
+/*override iphone styling */
 }
 
 input[type="submit"] {
-	width: 20%;
-	margin-left: 2.5%;
-	background-color: #006f99;
-	color: #fff;
-	border: none;
-	padding:0;
+  width:20%;
+  margin-left:2.5%;
+  background-color:#006f99;
+  color:#fff;
+  border:none;
+  padding:0
 }
 
 input[type="submit"]:hover {
-	background-color: #003043;
+  background-color:#003043
 }
 
 .resultsTitle {
-	margin-bottom: 25px;
-	color: #a1a1a1;
+  margin-bottom:25px;
+  color:#a1a1a1
 }
 
 a:link {
-	color: #006f99;
+  color:#006f99
 }
 
-
 /* ----------------------- Responsive Styles ----------------------- */
-
 @media screen and (max-width: 1150px) {
+header {
+  overflow:hidden
+}
 
-	header {
-		 overflow: hidden;
-	}
-
-	.ribbon {
-		 width: 80%;
-	}
-
+.ribbon {
+  width:80%
+}
 }
 
 @media screen and (max-width: 984px) {
-	
-
-	input[type="submit"] {
-		margin-left: 0;
-		display: block;
-		margin-bottom: 25px;
-		width: 40%;
-	}
-
-	input[name="topic_search"] {
-	width:90%;
-	}
+input[type="submit"] {
+  margin-left:0;
+  display:block;
+  margin-bottom:25px;
+  width:40%
 }
 
+input[name="topic_search"] {
+  width:90%
+}
+}
 
 @media screen and (max-width: 465px) {
+.title {
+  font-size:18px;
+  line-height:2.8em
+}
 
-	.title {
-		font-size: 18px;
-		line-height: 2.8em;
-	}
+.topic-search > h2 {
+  font-size:16px;
+  margin-bottom:15px
+}
 
-	.topic-search > h2 {
-		font-size: 16px;
-		margin-bottom: 15px;
-	}
+.wrapper {
+  padding:25px 25px 1px;
+/* 1px bottom margin to prevent collapsing margins at smaller screen size */
+  width:80%
+}
 
-	.wrapper {
-		padding: 25px 25px 1px 25px; /* 1px bottom margin to prevent collapsing margins at smaller screen size */
-		width: 80%;
-	}
-
-
-	input[name="topic_search"], input[type="submit"] {
-		font-size: 14px;
-		font-weight: normal;
-	}
-
-
+input[name="topic_search"],input[type="submit"] {
+  font-size:14px;
+  font-weight:400
+}
 }

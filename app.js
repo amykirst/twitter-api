@@ -1,16 +1,16 @@
 $(document).ready(function() {
   // Click function
   $('.tweet-getter').submit(function(event) {
-      // prevent form refresh
-      event.preventDefault();
-      // zero out results if previous search has run
-      $('#results').html('');
-      // zero out error message from previous search
-      $('#error').html('');
-      // Get the values of what the person entered in search
-      var query = $(this).find("input[name='topic_search']").val();
-      // Run function to send API request to Twitter
-      getTweets(query);
+    // prevent form refresh
+    event.preventDefault();
+    // zero out results if previous search has run
+    $('#results').html('');
+    // zero out error message from previous search
+    $('#error').html('');
+    // Get the values of what the person entered in search
+    var query = $(this).find("input[name='topic_search']").val();
+    // Run function to send API request to Twitter
+    getTweets(query);
   }); // end click function
 }); // end document ready
 
@@ -18,11 +18,11 @@ $(document).ready(function() {
 
 // Function that appends search result to DOM
 var formatTweet = function(tweet) {
-  
+
   // show response in console
   //console.log(tweets); // successful
 
- 
+
   // clone template
   var result = $('.topic-template .topic-results').clone();
   //console.log(result);
@@ -35,20 +35,21 @@ var formatTweet = function(tweet) {
 
   var screenName = result.find('.screen-name');
   var userURL = "http://www.twitter.com/" + tweet.user.screen_name;
-  screenName.append('<a target="_blank" href="' + userURL + '">' + tweet.user.screen_name + '</a>');
+  screenName.append('<a target="_blank" href="' + userURL + '">' + tweet.user
+    .screen_name + '</a>');
 
   var location = result.find('.location');
   location.append(tweet.user.location);
 
   var time = result.find('.time');
-  time.append(tweet.created_at); 
+  time.append(tweet.created_at);
 
-  return result; 
+  return result;
 }; // end showUser function
 
 
 // takes error string and turns it into displayable DOM element
-var showError = function(error){
+var showError = function(error) {
   // copy error template
   var errorElem = $('.topic-template .error').clone();
   // add error text to paragraph
@@ -67,21 +68,21 @@ var getTweets = function(query) {
 
     twitterData.get('/1.1/search/tweets.json', {
       data: {
-      q: query,
-      geocode: '42.94003620000001,-78.8677924,50mi'
+        q: query,
+        geocode: '42.94003620000001,-78.8677924,50mi'
       }
-    
+
 
     }).done(function(tweets) {
-        $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
-          console.log(tweets); 
+      $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
+        console.log(tweets);
         //store results in tweets variable and append
         //formatTweet(tweet).appendTo('#results');
         var currentTweet = formatTweet(tweet);
         $('#results').append(currentTweet);
         // show Search Results title
         $('.resultsTitle').removeClass('hidden');
-        });
+      });
 
     }).fail(function(error) {
       var errorElem = showError(error);
