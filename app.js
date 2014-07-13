@@ -34,7 +34,8 @@ var formatTweet = function(tweet) {
   status.append(tweet.text);
 
   var screenName = result.find('.screen-name');
-  screenName.append(tweet.user.screen_name);
+  var userURL = "http://www.twitter.com/" + tweet.user.screen_name;
+  screenName.append('<a target="_blank" href="' + userURL + '">' + tweet.user.screen_name + '</a>');
 
   var location = result.find('.location');
   location.append(tweet.user.location);

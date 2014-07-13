@@ -192,7 +192,7 @@ a:link {
 	}
 
 	.wrapper {
-		padding: 25px 25px 0 25px;
+		padding: 25px 25px 1px 25px; /* 1px bottom margin to prevent collapsing margins at smaller screen size */
 		width: 80%;
 	}
 
