@@ -75,7 +75,7 @@ var getTweets = function(query) {
 
     }).done(function(tweets) {
       $.each(tweets.statuses, function(index, tweet) { // tweets is the name of the object returned
-        console.log(tweets);
+        //console.log(tweet);
         //store results in tweets variable and append
         //formatTweet(tweet).appendTo('#results');
         var currentTweet = formatTweet(tweet);
